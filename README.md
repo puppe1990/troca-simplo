@@ -1,24 +1,3 @@
-# README
+# Troca Simplo 7
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Sistema integrado com a plataforma de eccomerce simplo 7. Seus clientes conseguem fazer trocas de um jeito mais fácil. Com controle de solicitações de trocas. Se tiver interesse entrar em contato pelo email matheus.puppe90@hotmail.com.
