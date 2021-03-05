@@ -2,9 +2,9 @@
   <h1><%=t '.title', :default => 'Buscar Pedido'%></h1>
 </div>
 <%= form_with url: search_orders_path do |form| %>
-  <%= form.label :pedidos %>
-  <%= form.text_field :pedidos %>
-  <%= form.label :email %>
-  <%= form.email_field :email %>
+  <%= form.label :pedido %>
+  <%= form.text_field :pedido %>
+  <%= form.label :cpf %>
+  <%= form.text_field :cpf %>
   <%= form.submit nil, :class => 'btn btn-primary' %>
 <% end %>

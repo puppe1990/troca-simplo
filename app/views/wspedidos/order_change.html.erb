@@ -1,1 +1,24 @@
-<h1>tetas</h1>
+<h1>Bem-vinda(o) <%= @order.cliente_razaosocial %></h1>
+
+<h2>Seu pedido é o número <%= @order.numero %></h2> 
+
+<table id="stockTable" class="table table-striped">
+  <thead>
+    <tr>
+      <th>Quer troca?</th>
+      <th>Nome Produto</th>
+      <th>SKU</th>
+      <th>Quantidade</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%#= f.check_box :send_email %> <br /></td>
+        <td><%= item.nome_produto%></td>
+        <td><%= item.sku%></td>
+        <td><%= item.quantidade%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -14,7 +14,7 @@ class Wspedido < ApplicationRecord
                           data_pedido: DateTime.parse(order_page['Wspedido']["data_pedido"]),
                           pedidostatus_id: order_page['Wspedido']["pedidostatus_id"],
                           cliente_tipo: order_page['Wspedido']["cliente_tipo"],
-                          cliente_cpfcnpj: order_page['Wspedido']["cliente_cpfcnpj"],
+                          cliente_cpfcnpj: order_page['Wspedido']["cliente_cpfcnpj"].delete('.-'),
                           cliente_razaosocial: order_page['Wspedido']["cliente_razaosocial"],
                           cliente_ie: order_page['Wspedido']["cliente_ie"],
                           cliente_data_nascimento: order_page['Wspedido']["cliente_data_nascimento"],
@@ -31,7 +31,7 @@ class Wspedido < ApplicationRecord
                           cliente_celular: order_page['Wspedido']["cliente_celular"],
                           cliente_email: order_page['Wspedido']["cliente_email"],
                           cliente_observacao: order_page['Wspedido']["cliente_observacao"],
-                          entrega_cpfcnpj: order_page['Wspedido']["entrega_cpfcnpj"],
+                          entrega_cpfcnpj: order_page['Wspedido']["entrega_cpfcnpj"].delete('.-'),
                           entrega_razaosocial: order_page['Wspedido']["entrega_razaosocial"],
                           entrega_ie: order_page['Wspedido']["entrega_ie"],
                           entrega_data_nascimento: order_page['Wspedido']["entrega_data_nascimento"],
@@ -71,6 +71,41 @@ class Wspedido < ApplicationRecord
         rescue ArgumentError
           puts 'erro'
         end
+        order_page['Item'].each do |item|
+          begin
+            Item.create(pedido_id: item["pedido_id"],
+                        produto_id: item["produto_id"].to_i,
+                        produto_estoque_id: item["produto_estoque_id"],
+                        sku: item["sku"],
+                        nome_produto: item["nome_produto"],
+                        slug_produto: item["slug_produto"],
+                        origem_mercadoria: item["origem_mercadoria"],
+                        tempo_producao: item["tempo_producao"],
+                        ncm: item["ncm"],
+                        combinacoes: item["combinacoes"],
+                        perguntas: item["perguntas"],
+                        quantidade: item["quantidade"],
+                        unidade_medida_id: item["unidade_medida_id"],
+                        valor_unitario: item["valor_unitario"],
+                        valor_total: item["valor_total"],
+                        altura: item["altura"],
+                        largura: item["largura"],
+                        comprimento: item["comprimento"],
+                        peso: item["peso"],
+                        valor_frete_unitario: item["valor_frete_unitario"],
+                        valor_frete_adicional: item["valor_frete_adicional"],
+                        objeto_codigo_rastreamento: item["objeto_codigo_rastreamento"],
+                        descricao: item["descricao"],
+                        image: item["image"],
+                        presente: item["presente"],
+                        total_presente: item["total_presente"],
+                        desconto: item["desconto"],
+                        desconto_percentual: item["desconto_percentual"],
+                        url_rastreamento_item: item["url_rastreamento_item"])
+          rescue ArgumentError
+            puts 'erro'
+          end
+        end        
       end
     end
   end
