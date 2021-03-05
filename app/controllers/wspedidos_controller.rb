@@ -17,4 +17,6 @@ class WspedidosController < ApplicationController
     @order = Wspedido.where(cliente_cpfcnpj: params['cpf']).where(numero: params['pedido']).first
     @items = Item.where(pedido_id: @order.id)
   end
+
+  def generate_order_change; end
 end
