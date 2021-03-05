@@ -1,4 +1,6 @@
 class WspedidosController < ApplicationController
+  skip_before_action :authenticate_user!
+
   def initial_screen; end
 
   def search_orders
@@ -14,9 +16,24 @@ class WspedidosController < ApplicationController
   end
 
   def order_change
+    # byebug
     @order = Wspedido.where(cliente_cpfcnpj: params['cpf']).where(numero: params['pedido']).first
     @items = Item.where(pedido_id: @order.id)
   end
 
-  def generate_order_change; end
+  def generate_order_change
+    order_change = OrderChange.new(description: params['description'])
+    clothes = []
+    params["order_change"].each do |oc|
+      if oc.second == "1"
+        # byebug
+        item = Item.find_by(item_id: oc.first)
+        clothes.append("#{item.nome_produto}, #{item.sku}, Valor: #{item.valor_total}, Quantidade: #{item.quantidade}")
+      end
+    end
+    order_change.clothes = clothes
+    redirect_to change_order_saved_path, notice: 'Solitação salva com sucesso.' if order_change.save
+  end
+
+  def change_order_saved; end
 end

@@ -1,0 +1,2 @@
+class OrderChange < ApplicationRecord
+end

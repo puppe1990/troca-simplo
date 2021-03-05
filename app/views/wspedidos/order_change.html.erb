@@ -15,11 +15,11 @@
     <tbody>
       <% @items.each do |item| %>
         <tr>
-          <td><%= form.check_box :id %> <br /></td>
-          <td><%= item.nome_produto%></td>
-          <td><%= item.sku%></td>
-          <td><%= item.valor_total%></td>
-          <td><%= item.quantidade%></td>
+          <td><%= check_box 'order_change', item.item_id %> <br /></td>
+          <td><%= item.nome_produto %></td>
+          <td><%= item.sku %></td>
+          <td><%= item.valor_total %></td>
+          <td><%= item.quantidade %></td>
         </tr>
       <% end %>
     </tbody>

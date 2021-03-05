@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_05_014907) do
+ActiveRecord::Schema.define(version: 2021_03_05_015833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "items", force: :cascade do |t|
+    t.string "item_id"
     t.string "pedido_id"
     t.string "produto_id"
     t.string "produto_estoque_id"
@@ -45,6 +46,13 @@ ActiveRecord::Schema.define(version: 2021_03_05_014907) do
     t.string "desconto"
     t.string "desconto_percentual"
     t.string "url_rastreamento_item"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "order_changes", force: :cascade do |t|
+    t.string "description"
+    t.text "clothes", default: [], array: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -73,7 +73,8 @@ class Wspedido < ApplicationRecord
         end
         order_page['Item'].each do |item|
           begin
-            Item.create(pedido_id: item["pedido_id"],
+            Item.create(item_id: item["id"],
+                        pedido_id: item["pedido_id"],
                         produto_id: item["produto_id"].to_i,
                         produto_estoque_id: item["produto_estoque_id"],
                         sku: item["sku"],
