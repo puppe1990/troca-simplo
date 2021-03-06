@@ -25,6 +25,8 @@
     </tbody>
   </table>
   <h3>Motivo</h3>
+  <div>
+  <%= form.hidden_field :order_id, value: @order.id %>
   <%= text_area(:change, :description, size: "100X100") %><br>
   <%= form.submit nil, :class => 'btn btn-primary' %>
 

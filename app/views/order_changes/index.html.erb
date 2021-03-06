@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Order Changes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Número Pedido</th>
+      <th>Nome Cliente</th>
+      <th>Description</th>
+      <th>Clothes</th>
+      <th>Telefone</th>
+      <th>Whatsapp</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @order_changes.each do |order_change| %>
+      <tr>
+      <td>
+        <%= order_change.order_id %></td>
+        <td><%= order_change.client_name %></td>
+        <td><%= order_change.description %></td>
+        <td><%= order_change.clothes %></td>
+        <td><%= order_change.phone %></td>
+        <td><a href="https://web.whatsapp.com/send?phone=55<%= order_change.phone.delete'() ' %>&amp;text=Oi <%= order_change.client_name.split(" ").first %>" target="_blank">Clique Aqui para mandar uma mensagem pelo WhatsApp</a></td>        
+        <td><a href="https://api.whatsapp.com/send?phone=55<%= order_change.phone.delete'() ' %>&amp;text=Oi <%= order_change.client_name.split(" ").first %>" target="_blank">Clique Aqui para mandar uma mensagem pelo WhatsApp</a></td>
+        <td><%= link_to 'Show', order_change %></td>
+        <td><%= link_to 'Edit', edit_order_change_path(order_change) %></td>
+        <td><%= link_to 'Destroy', order_change, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Order Change', new_order_change_path %>
