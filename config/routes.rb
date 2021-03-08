@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   get '/order_change/:pedido/:cpf', to: 'wspedidos#order_change', as: 'order_change_view'
   post '/generate_order_change', to: 'wspedidos#generate_order_change', as: 'generate_order_change'
   get '/change_order_saved', to: 'wspedidos#change_order_saved', as: 'change_order_saved'
+  post '/api/simplo7', to: 'wspedidos#webhook_data', as: 'webhook_data'
   root to: 'wspedidos#initial_screen'
 end

@@ -1,5 +1,5 @@
 class WspedidosController < ApplicationController
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!, :verify_authenticity_token
 
   def initial_screen; end
 
@@ -38,4 +38,19 @@ class WspedidosController < ApplicationController
   end
 
   def change_order_saved; end
+
+  def webhook_data
+    @pedido = Wspedido.find_by(id: params["Wspedido"]["id"].to_i)
+    if @pedido.present?
+      if @pedido.pedidostatus_id != params["Wspedido"]["pedidostatus_id"]
+        @pedido.update(pedidostatus_id: params["Wspedido"]["pedidostatus_id"])
+        render json: @pedido
+      else
+        render json: { 'updated': 'nothing to change' }
+      end
+    else
+      @wspedido = Wspedido.webhook_save(params)
+      render json: @wspedido
+    end
+  end
 end
