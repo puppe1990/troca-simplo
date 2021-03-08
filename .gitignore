@@ -7,25 +7,18 @@
 # Ignore bundler config.
 /.bundle
 
-# Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
-/db/*.sqlite3-*
-
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
 !/log/.keep
 !/tmp/.keep
 
-# Ignore pidfiles, but keep the directory.
-/tmp/pids/*
-!/tmp/pids/
-!/tmp/pids/.keep
-
-# Ignore uploaded files in development.
+# Ignore uploaded files in development
 /storage/*
 !/storage/.keep
+
+/node_modules
+/yarn-error.log
 
 /public/assets
 .byebug_history
@@ -33,6 +26,18 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+.generators
+.idea/
+.rakeTasks
+latest.dump
+latest.dump.1
+latest.dump.2
+/tmp/pids/server.pid
+/log/development.log
+/config/cable.yml
+config/cable.yml
+/tmp/cache/bootsnap-load-path-cache
+/tmp/cache/webpacker/last-compilation-digest-development
 /public/packs
 /public/packs-test
 /node_modules
