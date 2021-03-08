@@ -212,4 +212,27 @@ class Wspedido < ApplicationRecord
       end
     end        
   end
+
+  def self.update_status(host, app_key)
+    @order_page = HTTParty.get("#{host}/ws/wspedidos.json",
+                  headers: { content: 'application/json',
+                            Appkey: "#{app_key}" })
+    (1..@order_page['pagination']['page_count']).each do |i|
+      @order_page = HTTParty.get("#{host}/ws/wspedidos.json?page=#{i}",
+                    headers: { content: 'application/json',
+                              Appkey: "#{app_key}" })
+      @order_page['result'].each do |order_page|
+        @pedido = Wspedido.find_by(id: order_page["Wspedido"]["id"].to_i)
+        if @pedido.present?
+          if @pedido.pedidostatus_id != order_page["Wspedido"]["pedidostatus_id"]
+            @pedido.update(pedidostatus_id: order_page["Wspedido"]["pedidostatus_id"])
+          else
+            p 'nothing to change'
+          end
+        else
+          @wspedido = Wspedido.webhook_save(order_page)
+        end
+      end
+    end
+  end
 end
