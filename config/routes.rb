@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :order_changes
   devise_for :users
+  devise_scope :user do
+    get 'admin', to: 'devise/sessions#new'
+  end
   get '/order', to: 'wspedidos#initial_screen', as: 'inital_screen'
   post '/search_orders', to: 'wspedidos#search_orders', as: 'search_orders'
   get '/order_change/:pedido/:cpf', to: 'wspedidos#order_change', as: 'order_change_view'
