@@ -21,7 +21,6 @@ class WspedidosController < ApplicationController
   end
 
   def generate_order_change
-    # byebug
     wspedido = Wspedido.find(params["order_id"].to_i)
     order_change = OrderChange.new(description: params["change"]["description"], 
                                    client_name: wspedido.cliente_razaosocial,
