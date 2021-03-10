@@ -8,7 +8,10 @@ class WspedidosController < ApplicationController
                     .where(numero: params['pedido'])
                     .where(pedidostatus_id: [23, 3, 29])
                     .first
-    if order.present? && order.data_pedido >= Time.now - 30.days
+    order_change = OrderChange.find_by(order_id: params['pedido'])
+    if order_change.present?
+      redirect_to inital_screen_path, notice: 'Solicitação de troca já realizada.'
+    elsif order.present?
       redirect_to order_change_view_path(cpf: params['cpf'].delete('.-'), pedido: params['pedido']), notice: 'Pedido Encontrado.'
     else
       redirect_to inital_screen_path, notice: 'Pedido Não Encontrado.'
