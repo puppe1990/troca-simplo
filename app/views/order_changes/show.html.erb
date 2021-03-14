@@ -10,5 +10,10 @@
   <%= @order_change.clothes %>
 </p>
 
+<p>
+  <strong>Status:</strong>
+  <%= @order_change.status %>
+</p>
+
 <%= link_to 'Edit', edit_order_change_path(@order_change) %> |
 <%= link_to 'Back', order_changes_path %>

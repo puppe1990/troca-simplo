@@ -6,10 +6,13 @@
       <th>Número Pedido</th>
       <th>Nome Cliente</th>
       <th>Description</th>
-      <th>Clothes</th>
+      <th>Roupas</th>
+      <th>Email</th>
+      <th>Endereço Completo</th>
       <th>Telefone</th>
       <th>Whatsapp PC</th>
       <th>Whatsapp Celular</th>
+      <th>Status Solicitação</th>
       <th></th>
       <th colspan="3"></th>
     </tr>
@@ -28,12 +31,15 @@
             <br>
           <% end %>
         </td>
+        <td><%= order_change.email %></td>
+        <td><%= order_change.full_address %></td>
         <td><%= order_change.phone %></td>
         <td><a href="https://web.whatsapp.com/send?phone=55<%= order_change.phone.delete'() ' %>&amp;text=Oi <%= order_change.client_name.split(" ").first %>" target="_blank">Clique Aqui para mandar uma mensagem pelo WhatsApp</a></td>        
         <td><a href="https://api.whatsapp.com/send?phone=55<%= order_change.phone.delete'() ' %>&amp;text=Oi <%= order_change.client_name.split(" ").first %>" target="_blank">Clique Aqui para mandar uma mensagem pelo WhatsApp</a></td>
+        <td><%= order_change.status %></td>
         <td><%= link_to 'Deletar', order_change, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%#= link_to 'Show', order_change %></td>
-        <td><%#= link_to 'Edit', edit_order_change_path(order_change) %></td>
+        <td><%= link_to 'Edit', edit_order_change_path(order_change) %></td>
       </tr>
     <% end %>
   </tbody>

@@ -13,12 +13,29 @@
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%= form.text_field :description, disabled: true %>
   </div>
 
   <div class="field">
     <%= form.label :clothes %>
-    <%= form.text_area :clothes %>
+    <%= form.text_area :clothes, disabled: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :full_address %>
+    <%= form.text_area :full_address, disabled: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_area :email, disabled: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :local_venda, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= select("order_change", "status", OrderChange.statuses.keys.to_a , {},{ include_blank: true, class: 'form-control form-control-sm' }) %>
+    </div>
   </div>
 
   <div class="actions">

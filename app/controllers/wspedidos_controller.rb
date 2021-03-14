@@ -12,7 +12,8 @@ class WspedidosController < ApplicationController
     if order_change.present?
       redirect_to inital_screen_path, notice: 'Solicitação de troca já realizada.'
     elsif order.present?
-      redirect_to order_change_view_path(cpf: params['cpf'].delete('.-'), pedido: params['pedido']), notice: 'Pedido Encontrado.'
+      redirect_to order_change_view_path(cpf: params['cpf'].delete('.-'), pedido: params['pedido']),
+                  notice: 'Pedido Encontrado.'
     else
       redirect_to inital_screen_path, notice: 'Pedido Não Encontrado.'
     end
@@ -24,14 +25,16 @@ class WspedidosController < ApplicationController
   end
 
   def generate_order_change
-    wspedido = Wspedido.find(params["order_id"].to_i)
-    order_change = OrderChange.new(description: params["change"]["description"], 
+    wspedido = Wspedido.find(params['order_id'].to_i)
+    order_change = OrderChange.new(description: params['change']['description'],
+                                   email: wspedido.cliente_email,
+                                   full_address: "#{wspedido.entrega_logradouro}, #{wspedido.entrega_numero}, #{wspedido.entrega_informacoes_adicionais}, CEP: #{wspedido.entrega_cep}, Bairro: #{wspedido.entrega_bairro}, Cidade: #{wspedido.entrega_cidade}, Estado: #{wspedido.entrega_estado}",
                                    client_name: wspedido.cliente_razaosocial,
                                    phone: wspedido.cliente_telefone,
-                                   order_id: wspedido.numero )
+                                   order_id: wspedido.numero)
     clothes = []
-    params["order_change"].each do |oc|
-      if oc.second == "1"
+    params['order_change'].each do |oc|
+      if oc.second == '1'
         item = Item.find_by(item_id: oc.first)
         clothes.append("#{item.nome_produto}, #{item.sku}, Valor: #{item.valor_total}, Quantidade: #{item.quantidade}")
       end
@@ -43,10 +46,10 @@ class WspedidosController < ApplicationController
   def change_order_saved; end
 
   def webhook_data
-    @pedido = Wspedido.find_by(id: params["Wspedido"]["id"].to_i)
+    @pedido = Wspedido.find_by(id: params['Wspedido']['id'].to_i)
     if @pedido.present?
-      if @pedido.pedidostatus_id != params["Wspedido"]["pedidostatus_id"]
-        @pedido.update(pedidostatus_id: params["Wspedido"]["pedidostatus_id"])
+      if @pedido.pedidostatus_id != params['Wspedido']['pedidostatus_id']
+        @pedido.update(pedidostatus_id: params['Wspedido']['pedidostatus_id'])
         render json: @pedido
       else
         render json: { 'updated': 'nothing to change' }

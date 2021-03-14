@@ -64,6 +64,6 @@ class OrderChangesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_change_params
-      params.require(:order_change).permit(:description, :clothes)
+      params.require(:order_change).permit(:status)
     end
 end
