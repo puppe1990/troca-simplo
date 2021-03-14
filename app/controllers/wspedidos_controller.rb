@@ -28,7 +28,7 @@ class WspedidosController < ApplicationController
     wspedido = Wspedido.find(params['order_id'].to_i)
     order_change = OrderChange.new(description: params['change']['description'],
                                    email: wspedido.cliente_email,
-                                   full_address: "#{wspedido.entrega_logradouro}, #{wspedido.entrega_numero}, #{wspedido.entrega_informacoes_adicionais}, CEP: #{wspedido.entrega_cep}, Bairro: #{wspedido.entrega_bairro}, Cidade: #{wspedido.entrega_cidade}, Estado: #{wspedido.entrega_estado}",
+                                   full_address: "Endereço: #{wspedido.entrega_logradouro}, #{wspedido.entrega_numero}, #{wspedido.entrega_informacoes_adicionais}, CEP: #{wspedido.entrega_cep}, Bairro: #{wspedido.entrega_bairro}, Cidade: #{wspedido.entrega_cidade}, Estado: #{wspedido.entrega_estado}",
                                    client_name: wspedido.cliente_razaosocial,
                                    phone: wspedido.cliente_telefone,
                                    order_id: wspedido.numero)

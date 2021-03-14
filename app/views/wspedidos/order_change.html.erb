@@ -1,4 +1,4 @@
-<h1>Bem-vinda(o) <%= @order.cliente_razaosocial %></h1>
+<h1>Bem-vindx <%= @order.cliente_razaosocial %></h1>
 
 <h2>Seu pedido é o número <%= @order.numero %></h2> 
 <%= form_with url: generate_order_change_path do |form| %>
@@ -25,6 +25,8 @@
     </tbody>
   </table>
   <h3>Motivo</h3>
+  <h5>Detalhar qual o motivo está fazendo a troca: Tamanho qual a parte que ficou pequena, desistência qual o motivo que levou a desistir da compra, defeito qual o defeito especificamente, se for erro de envio qual a peça for errada.
+  Caso a solitação não for feita com detalhes não será feita a troca.<h5>
   <div>
   <%= form.hidden_field :order_id, value: @order.id %>
   <%= text_area(:change, :description, size: "100X100") %><br>
