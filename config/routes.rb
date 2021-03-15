@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'admin', to: 'devise/sessions#new'
   end
-  get '/order', to: 'wspedidos#initial_screen', as: 'inital_screen'
+  get '/order', to: 'wspedidos#initial_screen', as: 'initial_screen'
+  get '/wspedidos', to: 'wspedidos#index', as: 'index'
   post '/search_orders', to: 'wspedidos#search_orders', as: 'search_orders'
   get '/order_change/:pedido/:cpf', to: 'wspedidos#order_change', as: 'order_change_view'
   post '/generate_order_change', to: 'wspedidos#generate_order_change', as: 'generate_order_change'

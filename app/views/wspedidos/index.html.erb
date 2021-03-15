@@ -1,0 +1,32 @@
+<table id="order_table" class="table-striped table-bordered table-responsive">
+  <thead>
+    <tr>
+      <th>Id Pedido</th>
+      <th>Name</th>
+      <th>Data Pedido</th>
+      <th>Status pedido</th>
+      <th>Telefone</th>
+      <th>Email</th>
+      <th>CEP</th>
+      <th>Rastreamento</th>
+      <th>Mensagem WhatsApp PC</th>
+      <th>Mensagem WhatsApp Celular</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% Wspedido.all.each do |order| %>
+      <tr>
+        <td><%= order.numero %></td>
+        <td><%= order.cliente_razaosocial %></td>
+        <td><%= order.data_pedido.strftime("%-d/%-m/%Y %H:%M") %></td>
+        <td><%= @status_code.key(order.pedidostatus_id)%></td>
+        <td><%= order.cliente_telefone %></td>
+        <td><%= order.cliente_email %></td>
+        <td><%= order.cliente_cep %></td>
+        <td><%= order.envio_codigo_objeto %></td>
+        <td><a href="https://web.whatsapp.com/send?phone=55<%= order.cliente_telefone.delete'() ' %>&amp;text=Oi <%= order.cliente_razaosocial.split(" ").first %>, sou a Lari da Purchase e recebemos o teu pedido <%= order.numero %> no site. Vi que seu pagamento é em depósito ou cartão, assim que efetuar pode mandar o comprovante pra mim! Em 3 dias após criado o pedido é cancelado automaticamente. Estou a disposição para tirar suas dúvidas ou informações! ❤" target="_blank">Clique Aqui para mandar uma mensagem pelo WhatsApp</a></td>        
+        <td><a href="https://api.whatsapp.com/send?phone=55<%= order.cliente_telefone.delete'() ' %>&amp;text=Oi <%= order.cliente_razaosocial.split(" ").first %>, sou a Lari da Purchase e recebemos o teu pedido <%= order.numero %> no site. Vi que seu pagamento é em depósito ou cartão, assim que efetuar pode mandar o comprovante pra mim! Em 3 dias após criado o pedido é cancelado automaticamente. Estou a disposição para tirar suas dúvidas ou informações! ❤" target="_blank">Clique Aqui para mandar uma mensagem pelo WhatsApp</a></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

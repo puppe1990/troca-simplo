@@ -21,8 +21,9 @@
       Logado como: <strong><%= current_user.email %></strong>.
       <%= link_to 'Editar perfil', edit_user_registration_path, :class => 'navbar-link' %> |
       <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %> |
-      <%= link_to "Página Inicial", inital_screen_path, :class => 'navbar-link'  %> |
+      <%= link_to "Página Inicial", initial_screen_path, :class => 'navbar-link'  %> |
       <%= link_to "Solicitações de troca", order_changes_path, :class => 'navbar-link'  %> |
+      <%= link_to "Pedidos Loja", index_path, :class => 'navbar-link'  %> |
     <% end %>
     <%= yield %>
   </body>
