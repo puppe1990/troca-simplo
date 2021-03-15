@@ -3,6 +3,14 @@
     <div class="col">
       <h1>Solicitação enviada</h1>
     </div>
+    <% if @order_change.change_type == 'troca_promoção' %>
+      <h5>Enviar o seu pedido para o endereço:
+          Rua Bresser, 1067 , SALA 15 - Brás, São Paulo - SP
+          CEP: 03053-000
+          Envie a foto do comprovante dos correios para o
+          WhatsApp: <a href="https://web.whatsapp.com/send?phone=5551982230340'%>&amp;text=Oi, quero enviar a foto do comprovante." target="_blank">Clique Aqui para entrar em contato.</a>
+      </h5>
+    <% end %>
     <div class="col">
       <h2>Entraremos em contato em breve!</h2>
       <a href="https://www.purchasestore.com.br">Retornar ao site</a>

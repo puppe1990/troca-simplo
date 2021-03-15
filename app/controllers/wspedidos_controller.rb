@@ -42,10 +42,12 @@ class WspedidosController < ApplicationController
       end
     end
     order_change.clothes = clothes
-    redirect_to change_order_saved_path, notice: 'Solitação salva com sucesso.' if order_change.save
+    redirect_to change_order_saved_path(id: order_change.id), notice: 'Solitação salva com sucesso.' if order_change.save
   end
 
-  def change_order_saved; end
+  def change_order_saved
+    @order_change = OrderChange.find(params['id'].to_i)
+  end
 
   def webhook_data
     @pedido = Wspedido.find_by(id: params['Wspedido']['id'].to_i)
