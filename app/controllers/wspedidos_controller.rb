@@ -31,6 +31,8 @@ class WspedidosController < ApplicationController
                                    full_address: "Endereço: #{wspedido.entrega_logradouro}, #{wspedido.entrega_numero}, #{wspedido.entrega_informacoes_adicionais}, CEP: #{wspedido.entrega_cep}, Bairro: #{wspedido.entrega_bairro}, Cidade: #{wspedido.entrega_cidade}, Estado: #{wspedido.entrega_estado}",
                                    client_name: wspedido.cliente_razaosocial,
                                    phone: wspedido.cliente_telefone,
+                                   change_type: params['change']['change_type'],
+                                   devolution_type: params['change']['devolution_type'],
                                    order_id: wspedido.numero)
     clothes = []
     params['order_change'].each do |oc|

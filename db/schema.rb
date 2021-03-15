@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_14_143438) do
+ActiveRecord::Schema.define(version: 2021_03_15_000508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(version: 2021_03_14_143438) do
     t.integer "status", default: 0
     t.string "full_address"
     t.string "email"
+    t.integer "change_type", default: 0
+    t.integer "devolution_type", default: 0
   end
 
   create_table "users", force: :cascade do |t|

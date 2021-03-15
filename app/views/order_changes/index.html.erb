@@ -5,7 +5,9 @@
     <tr>
       <th>Número Pedido</th>
       <th>Nome Cliente</th>
-      <th>Description</th>
+      <th>Descrição</th>
+      <th>Tipo de solicitação</th>
+      <th>Modo de retirada/Envio</th>
       <th>Roupas</th>
       <th>Email</th>
       <th>Endereço Completo</th>
@@ -25,6 +27,8 @@
         <%= order_change.order_id %></td>
         <td><%= order_change.client_name %></td>
         <td><%= order_change.description %></td>
+        <td><%= order_change.change_type %></td>
+        <td><%= order_change.devolution_type %></td>
         <td>
           <% order_change.clothes.each do |oc| %>
             <%=  oc %>

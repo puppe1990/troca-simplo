@@ -30,6 +30,18 @@
   <div>
   <%= form.hidden_field :order_id, value: @order.id %>
   <%= text_area(:change, :description, size: "100X100") %><br>
+  <div class="field">
+    <%= form.label 'Tipo de solicitação', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= select("change", "change_type", OrderChange.change_types.keys.to_a , {},{ include_blank: true, class: 'form-control form-control-sm' }) %>
+    </div>
+  </div>
+  <div class="field">
+    <%= form.label 'Modo de retirada/Envio', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= select("change", "devolution_type", OrderChange.devolution_types.keys.to_a , {},{ include_blank: true, class: 'form-control form-control-sm' }) %>
+    </div>
+  </div>
   <%= form.submit "Salvar", :class => 'btn btn-primary' %>
 
 <% end %>
