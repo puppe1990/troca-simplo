@@ -1,7 +1,7 @@
 databases:
- - name: mysite
-   databaseName: mysite
-   user: mysite
+ - name: troca_simplo
+   databaseName: troca_simplo
+   user: troca_simplo_user
 
 services:
  - type: web
