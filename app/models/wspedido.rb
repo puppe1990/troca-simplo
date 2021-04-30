@@ -1,12 +1,16 @@
 class Wspedido < ApplicationRecord
-  def self.integrate_orders(host, app_key)
-    @order_page = HTTParty.get("#{host}/ws/wspedidos.json",
+  
+  @host = 'INSERT_YOUR_HOST'
+  @app_key = 'INSERT_YOUR_API_KEY'
+  
+  def self.integrate_orders
+    @order_page = HTTParty.get("#{@host}/ws/wspedidos.json",
                                headers: { content: 'application/json',
-                                          Appkey: "#{app_key}" })
+                                          Appkey: "#{@app_key}" })
     (1..@order_page['pagination']['page_count']).each do |i|
-      @order_page = HTTParty.get("#{host}/ws/wspedidos.json?page=#{i}",
+      @order_page = HTTParty.get("#{@host}/ws/wspedidos.json?page=#{i}",
                                  headers: { content: 'application/json',
-                                            Appkey: "#{app_key}" })
+                                            Appkey: "#{@app_key}" })
       @order_page['result'].each do |order_page|
         begin
           Wspedido.create(id: order_page['Wspedido']["id"],
@@ -213,14 +217,14 @@ class Wspedido < ApplicationRecord
     end        
   end
 
-  def self.update_status(host, app_key)
-    @order_page = HTTParty.get("#{host}/ws/wspedidos.json",
+  def self.update_status
+    @order_page = HTTParty.get("#{@host}/ws/wspedidos.json",
                   headers: { content: 'application/json',
-                            Appkey: "#{app_key}" })
+                            Appkey: "#{@app_key}" })
     (1..@order_page['pagination']['page_count']).each do |i|
-      @order_page = HTTParty.get("#{host}/ws/wspedidos.json?page=#{i}",
+      @order_page = HTTParty.get("#{@host}/ws/wspedidos.json?page=#{i}",
                     headers: { content: 'application/json',
-                              Appkey: "#{app_key}" })
+                              Appkey: "#{@app_key}" })
       @order_page['result'].each do |order_page|
         @pedido = Wspedido.find_by(id: order_page["Wspedido"]["id"].to_i)
         if @pedido.present?
@@ -233,6 +237,32 @@ class Wspedido < ApplicationRecord
           @wspedido = Wspedido.webhook_save(order_page)
         end
       end
+    end
+  end
+
+  def self.update_order_status(order_number, order_status)
+    id = (order_number.to_i + 1).to_s
+    data = { 'Wspedido': { 'Status': { 'id': order_status } } }
+    begin
+      HTTParty.put("#{@host}/ws/wspedidos/#{id}.json",
+                   body: data,
+                   headers: { content: 'application/json',
+                              Appkey: @app_key })
+    rescue ArgumentError
+      puts 'erro'
+    end
+  end
+
+  def self.update_postal_code(order_number, post_code)
+    id = (order_number.to_i + 1).to_s
+    data = { 'Wspedido': { 'Entrega': { 'rastreamento': post_code } } }
+    begin
+      HTTParty.put("#{@host}/ws/wspedidos/#{id}.json",
+                   body: data,
+                   headers: { content: 'application/json',
+                              Appkey: @app_key })
+    rescue ArgumentError
+      puts 'erro'
     end
   end
 end
