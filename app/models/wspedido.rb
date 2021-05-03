@@ -1,7 +1,7 @@
 class Wspedido < ApplicationRecord
   
-  @host = 'INSERT_YOUR_HOST'
-  @app_key = 'INSERT_YOUR_API_KEY'
+  @host = 'https://purchasestore.com.br'
+  @app_key = 'ZTgyYjMzZDJhMDVjMTVjZWM4OWNiMGU5NjI1NTNkYmU'
   
   def self.integrate_orders
     @order_page = HTTParty.get("#{@host}/ws/wspedidos.json",
