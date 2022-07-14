@@ -42,7 +42,10 @@ class WspedidosController < ApplicationController
       end
     end
     order_change.clothes = clothes
-    redirect_to change_order_saved_path(id: order_change.id), notice: 'Solitação salva com sucesso.' if order_change.save
+    if order_change.save
+      redirect_to change_order_saved_path(id: order_change.id),
+                  notice: 'Solitação salva com sucesso.'
+    end
   end
 
   def change_order_saved
@@ -63,24 +66,23 @@ class WspedidosController < ApplicationController
       render json: @wspedido
     end
   end
-  
+
   def index
-    @status_code = {'Seu pedido foi criado com sucesso! Aguardamos o pagamento' => '1', 
-      'Aguardando Pagamento' => '24',
-      'Solicitação de troca ou devolução' => '29',
-      'Pago' => '2',
-      'Pedidos do sul,  SEM ESTOQUE' => '31',
-      'Fabricação' => '30',
-      'Agendado para entrega pelo motoboy!' => '33',
-      'Retirar em mãos Porto Alegre' => '32',
-      'Enviado' => '23',
-      'Entregue' => '3',
-      'Cancelado' => '4',
-      'Pedidos impressos São Paulo' => '35',
-      'Pedidos impressos Porto Alegre' => '36',
-      'Pedido pronta entrega! Imprimir e Embalagem ' => '34',
-      'Agendado para entrega pelo motoboy! ' => '33',
-      'Pedido bate-volta ' => '37'
-    }
+    @status_code = { 'Seu pedido foi criado com sucesso! Aguardamos o pagamento' => '1',
+                     'Aguardando Pagamento' => '24',
+                     'Solicitação de troca ou devolução' => '29',
+                     'Pago' => '2',
+                     'Pedidos do sul,  SEM ESTOQUE' => '31',
+                     'Fabricação' => '30',
+                     'Agendado para entrega pelo motoboy!' => '33',
+                     'Retirar em mãos Porto Alegre' => '32',
+                     'Enviado' => '23',
+                     'Entregue' => '3',
+                     'Cancelado' => '4',
+                     'Pedidos impressos São Paulo' => '35',
+                     'Pedidos impressos Porto Alegre' => '36',
+                     'Pedido pronta entrega! Imprimir e Embalagem ' => '34',
+                     'Agendado para entrega pelo motoboy! ' => '33',
+                     'Pedido bate-volta ' => '37' }
   end
 end
