@@ -278,7 +278,7 @@ DEPENDENCIES
   rack-mini-profiler (~> 2.0)
   rack-ratelimit
   rack-timeout
-  rails (~> 6.0.5, >= 6.0.5.1)
+  rails (~> 6.1.6, >= 6.1.6.1)
   ransack
   redis
   sass-rails (>= 6.0.0)
