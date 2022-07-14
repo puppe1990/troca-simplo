@@ -3,29 +3,16 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.6'
 
-<<<<<<< HEAD
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
-=======
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.5', '>= 6.0.5.1'
->>>>>>> 5ee1bd457ac7a486c880020377efb76cb6cecc2a
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
-<<<<<<< HEAD
 gem 'puma', '~> 5.0'
-=======
-gem 'puma', '~> 4.3', '>= 4.3.12'
->>>>>>> 5ee1bd457ac7a486c880020377efb76cb6cecc2a
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6.0.0'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-<<<<<<< HEAD
 gem 'webpacker', '~> 5.0'
-=======
-gem 'webpacker', '~> 4.3', '>= 4.3.0'
->>>>>>> 5ee1bd457ac7a486c880020377efb76cb6cecc2a
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -65,12 +52,7 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-<<<<<<< HEAD
-  gem 'capybara', '>= 3.26'
-  gem 'rspec-rails'
-=======
   gem 'capybara', '>= 3.36.0'
->>>>>>> 5ee1bd457ac7a486c880020377efb76cb6cecc2a
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
