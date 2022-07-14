@@ -2,7 +2,6 @@
   "name": "omnichannel",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
     "@fortawesome/fontawesome-free": "^5.7.2",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
@@ -11,13 +10,6 @@
     "bootstrap": "^4.2.1",
     "cleave.js": "^1.4.7",
     "izitoast": "^1.4.0",
-=======
-    "@rails/actioncable": "^6.1.4",
-    "@rails/activestorage": "^6.1.4",
-    "@rails/ujs": "^6.0.0",
-    "@rails/webpacker": "5.2.2",
-    "bootstrap": "^4.6.0",
->>>>>>> 5ee1bd457ac7a486c880020377efb76cb6cecc2a
     "jquery": "^3.6.0",
     "jquery.nicescroll": "^3.7.6",
     "popper.js": "^1.16.1",
