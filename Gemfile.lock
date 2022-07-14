@@ -128,19 +128,22 @@ GEM
     mime-types-data (3.2021.0225)
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
-    minitest (5.16.1)
+    minitest (5.16.2)
     msgpack (1.4.2)
     multi_xml (0.6.0)
     nio4r (2.5.8)
-    nokogiri (1.11.3)
-      mini_portile2 (~> 2.5.0)
+    nokogiri (1.13.7)
+      mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    nokogiri (1.11.3-x86_64-linux)
+    nokogiri (1.13.7-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.2.3)
-    public_suffix (4.0.6)
-    puma (4.3.12)
+    platform_agent (1.0.1)
+      activesupport (>= 5.2.0)
+      useragent (~> 0.16.3)
+    public_suffix (4.0.7)
+    puma (5.6.4)
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.4)
@@ -262,15 +265,18 @@ DEPENDENCIES
   devise
   geared_pagination
   httparty
-  jbuilder (~> 2.7)
-  listen (~> 3.2)
-  pg (>= 0.18, < 2.0)
-  puma (~> 4.3, >= 4.3.12)
-  rack-cors
-  rails (~> 6.0.3, >= 6.0.3.5)
-  rails-i18n (~> 6.0.0)
-  sass-rails (>= 6)
-
+  jbuilder (~> 2.11, >= 2.11.5)
+  listen (~> 3.3)
+  pg (~> 1.1)
+  platform_agent
+  puma (~> 5.0)
+  rack-mini-profiler (~> 2.0)
+  rack-ratelimit
+  rack-timeout
+  rails (~> 6.1.6, >= 6.1.6.1)
+  ransack
+  redis
+  sass-rails (>= 6.0.0)
   selenium-webdriver
   sidekiq
   spreadsheet_architect
