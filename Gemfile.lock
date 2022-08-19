@@ -138,7 +138,7 @@ GEM
     platform_agent (1.0.1)
       activesupport (>= 5.2.0)
       useragent (~> 0.16.3)
-    public_suffix (4.0.6)
+    public_suffix (4.0.7)
     puma (5.6.4)
       nio4r (~> 2.0)
     racc (1.6.0)
@@ -228,11 +228,11 @@ GEM
       sprockets (>= 3.0.0)
     thor (1.2.1)
     thread_safe (0.3.6)
-    tilt (2.0.10)
+    tilt (2.0.11)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    tzinfo (1.2.9)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     useragent (0.16.10)
     warden (1.2.9)
@@ -270,7 +270,7 @@ DEPENDENCIES
   devise
   geared_pagination
   httparty
-  jbuilder (~> 2.7)
+  jbuilder (~> 2.11, >= 2.11.5)
   listen (~> 3.3)
   pg (~> 1.1)
   platform_agent
@@ -278,7 +278,7 @@ DEPENDENCIES
   rack-mini-profiler (~> 2.0)
   rack-ratelimit
   rack-timeout
-  rails (~> 6.1.6, >= 6.1.6.1)
+  rails (~> 6.0.5, >= 6.0.5.1)
   ransack
   redis
   sass-rails (>= 6.0.0)
@@ -288,9 +288,9 @@ DEPENDENCIES
   spring
   turbolinks (~> 5)
   tzinfo-data
-  web-console (>= 4.1.0)
+  web-console (>= 4.2.0)
   webdrivers
-  webpacker (~> 5.0)
+  webpacker (~> 5.4, >= 5.4.3)
 
 RUBY VERSION
    ruby 2.6.6p146
