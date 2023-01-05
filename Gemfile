@@ -30,7 +30,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise'
 
-gem 'httparty'
+gem 'httparty', '>= 0.21.0'
 
 gem 'amazing_print'
 
