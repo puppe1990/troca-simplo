@@ -10,7 +10,7 @@
     "@rails/actioncable": "^6.1.4",
     "@rails/activestorage": "^6.1.4",
     "bootstrap": "^4.6.0",
-    "jquery": "^3.6.0",
+    "jquery": "^3.6.3",
     "jquery.nicescroll": "^3.7.6",
     "popper.js": "^1.16.1",
     "select2": "^4.0.7-rc.0",
