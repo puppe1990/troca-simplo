@@ -61,7 +61,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'geared_pagination'
 gem 'platform_agent'
-gem 'ransack'
+gem 'ransack', '>= 4.0.0'
 gem 'spreadsheet_architect'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
