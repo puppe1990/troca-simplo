@@ -59,7 +59,7 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'geared_pagination'
+gem 'geared_pagination', '>= 1.2.0'
 gem 'platform_agent'
 gem 'ransack'
 gem 'spreadsheet_architect'
